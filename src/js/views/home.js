@@ -6,11 +6,12 @@ import { Context } from "../store/appContext";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+
 	return (
 		<div className="text-center mt-5">
 			<div className="scrolling-wrapper row">
 				{store.planets.map((planet, index) => (
-					<Card key={index} planetName={planet.name} diameter={planet.uid} population={planet.url} />
+					<Card key={index} name={planet.name} diameter={planet.diameter} population={planet.population} />
 				))}
 			</div>
 			<div className="scrolling-wrapper row">

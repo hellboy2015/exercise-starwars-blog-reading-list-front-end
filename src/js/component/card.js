@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Card = props => {
 	return (
 		<div className="card col-3">
-			<img className="card-img-top" src="..." alt="Card image cap" />
+			<img className="card-img-top" src="https://picsum.photos/150/150" alt="Card image cap" />
 			<div className="card-body">
 				<h5 className="card-title">{props.name}</h5>
 				<p className="card-text">

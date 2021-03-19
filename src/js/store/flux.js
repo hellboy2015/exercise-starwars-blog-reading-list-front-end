@@ -36,14 +36,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				await fetch("https://www.swapi.tech/api/planets", requestOptions)
+				await fetch("https://swapi.dev/api/planets/", requestOptions)
 					.then(response => response.json())
 					.then(result => {
 						setStore({ planets: result.results });
 					})
 					.catch(error => console.log("error", error));
 
-				await fetch("https://www.swapi.tech/api/people/", requestOptions)
+				await fetch("https://swapi.dev/api/people/", requestOptions)
 					.then(response => response.json())
 					.then(result => {
 						setStore({ characters: result.results });
