@@ -12,17 +12,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			planets: [],
+			characters: [],
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
+			updateFavorites: newFavorite => {
+				setStore({ favorites: newFavorite });
+			},
+			getSwapiRecords: async () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+                */
+				const store = getStore();
+
+				var requestOptions = {
+					method: "GET",
+					redirect: "follow"
+				};
+
+				await fetch("https://www.swapi.tech/api/planets", requestOptions)
+					.then(response => response.json())
+					.then(result => {
+						setStore({ planets: result.results });
+					})
+					.catch(error => console.log("error", error));
+
+				await fetch("https://www.swapi.tech/api/people/", requestOptions)
+					.then(response => response.json())
+					.then(result => {
+						setStore({ characters: result.results });
+					})
+					.catch(error => console.log("error", error));
 			},
 			changeColor: (index, color) => {
 				//get the store
