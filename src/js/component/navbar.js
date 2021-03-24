@@ -22,8 +22,6 @@ export const Navbar = () => {
 					Favorites <span className="badge badge-primary">{store.favorites.length}</span>
 				</button>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					{console.log(store.favorites)}
-
 					{store.favorites.map((favorite, index) => (
 						<Favorites
 							key={index}

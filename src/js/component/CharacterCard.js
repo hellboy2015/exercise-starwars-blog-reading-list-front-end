@@ -1,10 +1,16 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 const CharacterCard = props => {
 	const { store, actions } = useContext(Context);
+	/* let isFavorite = false;
+	function updateFavorite() {
+		isFavorite = true;
+		console.log(isFavorite);
+	} */
+
 	return (
 		<div className="card col-3">
 			<img
@@ -22,8 +28,11 @@ const CharacterCard = props => {
 				</Link>
 				<a
 					href="#"
-					onClick={() => actions.addFavorites(props.name, "c" + props.characterId, props.entityType)}
-					className="btn btn-outline-warning">
+					onClick={e => {
+						actions.addFavorites(props.name, "c" + props.characterId, props.entityType);
+						//updateFavorite();
+					}}
+					className={"btn btn-outline-warning" /* + (isFavorite && " disabled") */}>
 					&#x2661;
 				</a>
 			</div>

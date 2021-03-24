@@ -27,16 +27,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					favorites: [...store.favorites, { id: favoriteID, name: favoriteName, entityType: entityType }]
 				});
-				//store.favorites.push({ id: favoriteID, name: favoriteName });
-				//setStore({ favorites: store.favorites });
 			},
 			deleteFavorites: (favoriteID, myEntityType) => {
 				const store = getStore();
-
-				//store.favorites.filter(favorite => favorite.id !== favoriteID);
-				console.log(myEntityType);
-				console.log(favoriteID);
-
 				setStore({
 					favorites: store.favorites.filter(favorite => favorite.id !== favoriteID)
 				});
