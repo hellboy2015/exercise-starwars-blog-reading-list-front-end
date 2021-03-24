@@ -21,7 +21,7 @@ const PlanetCard = props => {
 					Planet details
 				</Link>
 				<a
-					onClick={() => actions.addFavorites(props.name, props.planetId, props.entityType)}
+					onClick={() => actions.addFavorites(props.name, "p" + props.planetId, props.entityType)}
 					href="#"
 					className="btn btn-outline-warning">
 					&#x2661;

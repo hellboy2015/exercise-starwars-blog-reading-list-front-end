@@ -30,16 +30,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//store.favorites.push({ id: favoriteID, name: favoriteName });
 				//setStore({ favorites: store.favorites });
 			},
-			deleteFavorites: (favoriteID, entityType) => {
+			deleteFavorites: (favoriteID, myEntityType) => {
 				const store = getStore();
 
 				//store.favorites.filter(favorite => favorite.id !== favoriteID);
-				//console.log(favoriteID);
+				console.log(myEntityType);
+				console.log(favoriteID);
 
 				setStore({
-					favorites: store.favorites.filter(
-						favorite => favorite.id !== favoriteID && favorite.entityType !== entityType
-					)
+					favorites: store.favorites.filter(favorite => favorite.id !== favoriteID)
 				});
 			},
 			getSwapiRecords: async () => {

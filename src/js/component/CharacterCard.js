@@ -22,7 +22,7 @@ const CharacterCard = props => {
 				</Link>
 				<a
 					href="#"
-					onClick={() => actions.addFavorites(props.name, props.characterId, props.entityType)}
+					onClick={() => actions.addFavorites(props.name, "c" + props.characterId, props.entityType)}
 					className="btn btn-outline-warning">
 					&#x2661;
 				</a>

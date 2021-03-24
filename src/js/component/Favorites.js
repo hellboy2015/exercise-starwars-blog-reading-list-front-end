@@ -8,11 +8,11 @@ export const Favorites = props => {
 	return (
 		<div>
 			{props.entityType === "character" ? (
-				<Link to={"/singlecharacter/" + props.favoriteId} className="dropdown-item">
+				<Link to={"/singlecharacter/" + props.favoriteId.substring(1)} className="dropdown-item">
 					{props.name}
 				</Link>
 			) : (
-				<Link to={"/singleplanet/" + props.favoriteId} className="dropdown-item">
+				<Link to={"/singleplanet/" + props.favoriteId.substring(1)} className="dropdown-item">
 					{props.name}
 				</Link>
 			)}
@@ -26,5 +26,5 @@ export const Favorites = props => {
 Favorites.propTypes = {
 	name: PropTypes.string,
 	entityType: PropTypes.string,
-	favoriteId: PropTypes.number
+	favoriteId: PropTypes.string
 };
