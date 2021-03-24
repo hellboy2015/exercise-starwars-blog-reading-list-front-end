@@ -8,7 +8,7 @@ const CharacterCard = props => {
 	return (
 		<div className="card col-3">
 			<img
-				className="card-img-top"
+				className="card-img-top singleImg"
 				src={"https://picsum.photos/id/" + (props.imageId + 10) + "/200/300"}
 				alt="Card image cap"
 			/>
@@ -22,7 +22,7 @@ const CharacterCard = props => {
 				</Link>
 				<a
 					href="#"
-					onClick={() => actions.addFavorites(props.name, props.characterId)}
+					onClick={() => actions.addFavorites(props.name, props.characterId, props.entityType)}
 					className="btn btn-outline-warning">
 					&#x2661;
 				</a>
@@ -37,7 +37,8 @@ CharacterCard.propTypes = {
 	hairColor: PropTypes.string,
 	eyeColor: PropTypes.string,
 	imageId: PropTypes.number,
-	characterId: PropTypes.number
+	characterId: PropTypes.number,
+	entityType: PropTypes.string
 };
 
 export default CharacterCard;

@@ -21,6 +21,7 @@ export const Home = () => {
 						eyeColor={character.eye_color}
 						imageId={index}
 						characterId={index}
+						entityType={"character"}
 					/>
 				))}
 			</div>
@@ -34,6 +35,7 @@ export const Home = () => {
 						population={planet.population}
 						imageId={index}
 						planetId={index}
+						entityType={"planet"}
 					/>
 				))}
 			</div>

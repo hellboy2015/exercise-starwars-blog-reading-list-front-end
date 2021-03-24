@@ -22,19 +22,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			addFavorites: (favoriteName, favoriteID) => {
+			addFavorites: (favoriteName, favoriteID, entityType) => {
 				const store = getStore();
-				setStore({ favorites: [...store.favorites, { id: favoriteID, name: favoriteName }] });
+				setStore({
+					favorites: [...store.favorites, { id: favoriteID, name: favoriteName, entityType: entityType }]
+				});
 				//store.favorites.push({ id: favoriteID, name: favoriteName });
 				//setStore({ favorites: store.favorites });
 			},
-			deleteFavorites: favoriteID => {
+			deleteFavorites: (favoriteID, entityType) => {
 				const store = getStore();
 
 				//store.favorites.filter(favorite => favorite.id !== favoriteID);
 				//console.log(favoriteID);
 
-				setStore({ favorites: store.favorites.filter(favorite => favorite.id !== favoriteID) });
+				setStore({
+					favorites: store.favorites.filter(
+						favorite => favorite.id !== favoriteID && favorite.entityType !== entityType
+					)
+				});
 			},
 			getSwapiRecords: async () => {
 				/**
