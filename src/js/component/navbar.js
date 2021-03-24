@@ -19,15 +19,17 @@ export const Navbar = () => {
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false">
-					Dropdown button
+					Favorites
 				</button>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					{console.log(store.favorites)}
+
 					{store.favorites.map((favorite, index) => (
 						<Favorites
 							key={index}
 							name={favorite.name}
 							entityType={favorite.entityType}
-							favoriteId={favorite.favoriteId}
+							favoriteId={favorite.id}
 						/>
 					))}
 				</div>

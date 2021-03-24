@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 const PlanetCard = props => {
+	const { store, actions } = useContext(Context);
+	let basePlanetId = 1000;
 	return (
 		<div className="card col-3">
 			<img
@@ -13,10 +17,13 @@ const PlanetCard = props => {
 				<h5 className="card-title">{props.name}</h5>
 				<p className="card-text">Population: {props.population}</p>
 				<p className="card-text">Terrain: {props.terrain}</p>
-				<a href="#" className="btn btn-primary mr-2">
+				<Link to={"/singleplanet/" + props.planetId} className="btn btn-primary mr-2">
 					Planet details
-				</a>
-				<a href="#" className="btn btn-outline-warning">
+				</Link>
+				<a
+					onClick={() => actions.addFavorites(props.name, props.planetId + basePlanetId)}
+					href="#"
+					className="btn btn-outline-warning">
 					&#x2661;
 				</a>
 			</div>
@@ -28,7 +35,8 @@ PlanetCard.propTypes = {
 	name: PropTypes.string,
 	terrain: PropTypes.string,
 	population: PropTypes.string,
-	imageId: PropTypes.number
+	imageId: PropTypes.number,
+	planetId: PropTypes.number
 };
 
 export default PlanetCard;

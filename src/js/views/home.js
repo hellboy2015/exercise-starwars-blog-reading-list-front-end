@@ -10,17 +10,7 @@ export const Home = () => {
 
 	return (
 		<div className="mt-5">
-			<div className="scrolling-wrapper row">
-				{store.planets.map((planet, index) => (
-					<PlanetCard
-						key={index}
-						name={planet.name}
-						terrain={planet.terrain}
-						population={planet.population}
-						imageId={index}
-					/>
-				))}
-			</div>
+			<div className="h1 text-danger font-weight-bold">Characters</div>
 			<div className="scrolling-wrapper row">
 				{store.characters.map((character, index) => (
 					<CharacterCard
@@ -30,6 +20,20 @@ export const Home = () => {
 						hairColor={character.hair_color}
 						eyeColor={character.eye_color}
 						imageId={index}
+						characterId={index}
+					/>
+				))}
+			</div>
+			<div className="h1 text-danger font-weight-bold mt-5">Planets</div>
+			<div className="scrolling-wrapper row">
+				{store.planets.map((planet, index) => (
+					<PlanetCard
+						key={index}
+						name={planet.name}
+						terrain={planet.terrain}
+						population={planet.population}
+						imageId={index}
+						planetId={index}
 					/>
 				))}
 			</div>

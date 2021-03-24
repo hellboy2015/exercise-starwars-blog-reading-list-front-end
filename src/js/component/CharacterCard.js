@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 const CharacterCard = props => {
+	const { store, actions } = useContext(Context);
 	return (
 		<div className="card col-3">
 			<img
@@ -14,10 +17,13 @@ const CharacterCard = props => {
 				<p className="card-text">Gender: {props.gender}</p>
 				<p className="card-text">Hair Color: {props.hairColor}</p>
 				<p className="card-text">Eye-Color: {props.eyeColor}</p>
-				<a href="#" className="btn btn-primary mr-2">
+				<Link to={"/singlecharacter/" + props.characterId} className="btn btn-primary mr-2">
 					Character details
-				</a>
-				<a href="#" className="btn btn-outline-warning">
+				</Link>
+				<a
+					href="#"
+					onClick={() => actions.addFavorites(props.name, props.characterId)}
+					className="btn btn-outline-warning">
 					&#x2661;
 				</a>
 			</div>
@@ -30,7 +36,8 @@ CharacterCard.propTypes = {
 	gender: PropTypes.string,
 	hairColor: PropTypes.string,
 	eyeColor: PropTypes.string,
-	imageId: PropTypes.number
+	imageId: PropTypes.number,
+	characterId: PropTypes.number
 };
 
 export default CharacterCard;
