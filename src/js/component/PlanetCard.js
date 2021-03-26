@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const PlanetCard = props => {
 	const { store, actions } = useContext(Context);
+	const checkIfFav = store.favorites.filter(fav => fav.id === "p" + props.planetId);
 
 	return (
 		<div className="card col-3">
@@ -23,7 +24,7 @@ const PlanetCard = props => {
 				<a
 					onClick={() => actions.addFavorites(props.name, "p" + props.planetId, props.entityType)}
 					href="#"
-					className="btn btn-outline-warning">
+					className={"btn btn-outline-warning" + (checkIfFav[0] && checkIfFav[0].isFav ? " disabled" : "")}>
 					&#x2661;
 				</a>
 			</div>

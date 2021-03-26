@@ -25,7 +25,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavorites: (favoriteName, favoriteID, entityType) => {
 				const store = getStore();
 				setStore({
-					favorites: [...store.favorites, { id: favoriteID, name: favoriteName, entityType: entityType }]
+					favorites: [
+						...store.favorites,
+						{ id: favoriteID, name: favoriteName, entityType: entityType, isFav: true }
+					]
 				});
 			},
 			deleteFavorites: (favoriteID, myEntityType) => {

@@ -5,11 +5,9 @@ import { Link } from "react-router-dom";
 
 const CharacterCard = props => {
 	const { store, actions } = useContext(Context);
-	/* let isFavorite = false;
-	function updateFavorite() {
-		isFavorite = true;
-		console.log(isFavorite);
-	} */
+
+	const checkIfFav = store.favorites.filter(fav => fav.id === "c" + props.characterId);
+	//checkIfFav[props.characterId] && console.log(checkIfFav[props.characterId].isFav);
 
 	return (
 		<div className="card col-3">
@@ -30,9 +28,8 @@ const CharacterCard = props => {
 					href="#"
 					onClick={e => {
 						actions.addFavorites(props.name, "c" + props.characterId, props.entityType);
-						//updateFavorite();
 					}}
-					className={"btn btn-outline-warning" /* + (isFavorite && " disabled") */}>
+					className={"btn btn-outline-warning" + (checkIfFav[0] && checkIfFav[0].isFav ? " disabled" : "")}>
 					&#x2661;
 				</a>
 			</div>
