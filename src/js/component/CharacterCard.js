@@ -25,7 +25,6 @@ const CharacterCard = props => {
 					Character details
 				</Link>
 				<a
-					href="#"
 					onClick={e => {
 						actions.addFavorites(props.name, "c" + props.characterId, props.entityType);
 					}}
