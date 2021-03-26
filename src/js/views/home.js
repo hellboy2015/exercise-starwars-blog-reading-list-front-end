@@ -9,7 +9,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="mt-5">
+		<div className="mt-5 ml-3">
 			<div className="h1 text-danger font-weight-bold">Characters</div>
 			<div className="scrolling-wrapper row">
 				{store.characters.map((character, index) => (

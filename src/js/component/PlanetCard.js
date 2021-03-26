@@ -8,10 +8,10 @@ const PlanetCard = props => {
 	const checkIfFav = store.favorites.filter(fav => fav.id === "p" + props.planetId);
 
 	return (
-		<div className="card col-3">
+		<div className="card col-2">
 			<img
 				className="card-img-top singleImg"
-				src={"https://picsum.photos/id/" + (props.imageId + 1) + "/200/300"}
+				src={"https://picsum.photos/id/" + (props.imageId + 20) + "/200/300"}
 				alt="Card image cap"
 			/>
 			<div className="card-body">

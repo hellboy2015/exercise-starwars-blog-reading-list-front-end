@@ -10,7 +10,7 @@ const CharacterCard = props => {
 	//checkIfFav[props.characterId] && console.log(checkIfFav[props.characterId].isFav);
 
 	return (
-		<div className="card col-3">
+		<div className="card col-2">
 			<img
 				className="card-img-top singleImg"
 				src={"https://picsum.photos/id/" + (props.imageId + 10) + "/200/300"}
