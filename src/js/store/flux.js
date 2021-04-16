@@ -48,17 +48,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				await fetch("https://swapi.dev/api/planets/", requestOptions)
+				await fetch("https://3000-harlequin-quail-6c3y17o5.ws-us03.gitpod.io/planets/", requestOptions)
 					.then(response => response.json())
 					.then(result => {
-						setStore({ planets: result.results });
+						setStore({ planets: result });
 					})
 					.catch(error => console.log("error", error));
 
-				await fetch("https://swapi.dev/api/people/", requestOptions)
+				await fetch("https://3000-harlequin-quail-6c3y17o5.ws-us03.gitpod.io/characters", requestOptions)
 					.then(response => response.json())
 					.then(result => {
-						setStore({ characters: result.results });
+						setStore({ characters: result });
 					})
 					.catch(error => console.log("error", error));
 			},

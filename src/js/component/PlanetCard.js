@@ -34,7 +34,7 @@ const PlanetCard = props => {
 PlanetCard.propTypes = {
 	name: PropTypes.string,
 	terrain: PropTypes.string,
-	population: PropTypes.string,
+	population: PropTypes.number,
 	imageId: PropTypes.number,
 	planetId: PropTypes.number,
 	entityType: PropTypes.string
