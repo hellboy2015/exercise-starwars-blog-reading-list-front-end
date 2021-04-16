@@ -42,10 +42,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
 				//const store = getStore();
+				var token = sessionStorage.getItem("my_token");
 
 				var requestOptions = {
 					method: "GET",
-					redirect: "follow"
+					redirect: "follow",
+					headers: new Headers({
+						Accept: "*/*",
+						Authorization: "Bearer " + token
+					})
 				};
 
 				await fetch("https://3000-harlequin-quail-6c3y17o5.ws-us03.gitpod.io/planets/", requestOptions)
