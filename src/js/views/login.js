@@ -50,9 +50,6 @@ export const Login = () => {
 						id="exampleInputUsername1"
 						aria-describedby="usernamelHelp"
 					/>
-					<div id="usernameHelp" className="form-text">
-						We will NEVER share your email with anyone else.
-					</div>
 				</div>
 				<div className="mb-3">
 					<label htmlFor="exampleInputPassword1" className="form-label">

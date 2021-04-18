@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 export const Register = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [username, setUsername] = useState("");
 	const [auth, setAuth] = useState(false);
 
 	const handleSubmit = e => {
@@ -11,21 +12,23 @@ export const Register = () => {
 
 		const body = {
 			email: email,
+			username: username,
 			password: password
 		};
 
 		// fetch de REGISTER
-		fetch("https://3000-peach-reindeer-5dsbnefl.ws-us03.gitpod.io/register", {
+		fetch("https://3000-harlequin-quail-6c3y17o5.ws-us03.gitpod.io/register/", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
-				"Content-Type": "application/json"
+				"Content-Type": "application/json",
+				mode: "no-cors"
 			}
 		})
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
-				// setAuth(true);
+				//setAuth(true);
 			})
 			.catch(err => console.log(err));
 	};
@@ -34,6 +37,18 @@ export const Register = () => {
 		<div className="mx-auto pt-5">
 			<h1>Register</h1>
 			<form onSubmit={handleSubmit} style={{ width: "500px" }}>
+				<div className="mb-3">
+					<label htmlFor="exampleInputUsername1" className="form-label">
+						Username
+					</label>
+					<input
+						onChange={e => setUsername(e.target.value)}
+						type="username"
+						className="form-control"
+						id="exampleInputUsername1"
+						aria-describedby="usernameHelp"
+					/>
+				</div>
 				<div className="mb-3">
 					<label htmlFor="exampleInputEmail1" className="form-label">
 						Email address

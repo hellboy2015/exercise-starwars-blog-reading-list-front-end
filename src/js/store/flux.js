@@ -22,14 +22,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			addFavorites: (favoriteName, favoriteID, entityType) => {
+			getFavorites: async () => {
+				var token = sessionStorage.getItem("my_token");
+
+				var requestOptions = {
+					method: "GET",
+					redirect: "follow",
+					headers: new Headers({
+						Accept: "*/*",
+						Authorization: "Bearer " + token
+					})
+				};
+
+				await fetch("https://3000-harlequin-quail-6c3y17o5.ws-us03.gitpod.io/favorites/", requestOptions)
+					.then(response => response.json())
+					.then(result => {
+						console.log(result);
+						setStore({
+							favorites: { result }
+						});
+					})
+					.catch(error => console.log("error", error));
+			},
+			addFavorites: async (favoriteName, favoriteID, entityType) => {
 				const store = getStore();
-				setStore({
-					favorites: [
-						...store.favorites,
-						{ id: favoriteID, name: favoriteName, entityType: entityType, isFav: true }
-					]
-				});
+				var token = sessionStorage.getItem("my_token");
+
+				const body = {
+					favoriteName: favoriteName,
+					favoriteID: favoriteID,
+					entityType: entityType,
+					isFav: true
+				};
+
+				fetch("https://3000-harlequin-quail-6c3y17o5.ws-us03.gitpod.io/favorites/", {
+					method: "POST",
+					body: JSON.stringify(body),
+					headers: {
+						"Content-Type": "application/json",
+						mode: "no-cors",
+						Accept: "*/*"
+					}
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+						getActions().getFavorites();
+						//setAuth(true);
+					})
+					.catch(err => console.log(err));
 			},
 			deleteFavorites: (favoriteID, myEntityType) => {
 				const store = getStore();
@@ -49,7 +90,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow",
 					headers: new Headers({
 						Accept: "*/*",
-						Authorization: "Bearer " + token
+						mode: "no-cors"
+						//Authorization: "Bearer " + token
 					})
 				};
 
