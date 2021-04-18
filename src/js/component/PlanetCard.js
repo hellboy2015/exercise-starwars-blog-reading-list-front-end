@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const PlanetCard = props => {
 	const { store, actions } = useContext(Context);
-	const checkIfFav = store.favorites.filter(fav => fav.id === "p" + props.planetId);
+	const checkIfFav = store.favorites.filter(fav => fav.favoriteID === "p" + props.planetId);
 
 	return (
 		<div className="card col-2">

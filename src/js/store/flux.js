@@ -39,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => {
 						console.log(result);
 						setStore({
-							favorites: { result }
+							favorites: result
 						});
 					})
 					.catch(error => console.log("error", error));
@@ -83,6 +83,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
 				//const store = getStore();
+				getActions().getFavorites();
 				var token = sessionStorage.getItem("my_token");
 
 				var requestOptions = {

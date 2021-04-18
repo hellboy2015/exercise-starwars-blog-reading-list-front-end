@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 const CharacterCard = props => {
 	const { store, actions } = useContext(Context);
 
-	const checkIfFav = store.favorites.filter(fav => fav.id === "c" + props.characterId);
-	//checkIfFav[props.characterId] && console.log(checkIfFav[props.characterId].isFav);
+	const checkIfFav = store.favorites.filter(fav => fav.favoriteID === "c" + props.characterId);
 
 	return (
 		<div className="card col-2">
