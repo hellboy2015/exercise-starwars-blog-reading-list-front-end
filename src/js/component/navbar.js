@@ -29,6 +29,7 @@ export const Navbar = () => {
 							name={favorite.favoriteName}
 							entityType={favorite.entityType}
 							favoriteId={favorite.favoriteID}
+							idToDelete={favorite.id}
 						/>
 					))}
 				</div>

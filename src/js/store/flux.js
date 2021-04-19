@@ -25,6 +25,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getFavorites: async () => {
 				var token = sessionStorage.getItem("my_token");
 
+				if (!token) {
+					return;
+				}
+
 				var requestOptions = {
 					method: "GET",
 					redirect: "follow",
@@ -52,7 +56,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					favoriteName: favoriteName,
 					favoriteID: favoriteID,
 					entityType: entityType,
-					isFav: true
+					isFav: true,
+					Authorization: "Bearer " + token
 				};
 
 				fetch("https://3000-harlequin-quail-6c3y17o5.ws-us03.gitpod.io/favorites/", {
@@ -61,7 +66,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: {
 						"Content-Type": "application/json",
 						mode: "no-cors",
-						Accept: "*/*"
+						Accept: "*/*",
+						Authorization: "Bearer " + token
 					}
 				})
 					.then(res => res.json())
@@ -72,11 +78,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(err => console.log(err));
 			},
-			deleteFavorites: (favoriteID, myEntityType) => {
+			deleteFavorites: idToDelete => {
 				const store = getStore();
-				setStore({
-					favorites: store.favorites.filter(favorite => favorite.id !== favoriteID)
-				});
+
+				var token = sessionStorage.getItem("my_token");
+
+				const body = {
+					idToDelete: idToDelete
+				};
+
+				console.log(body);
+
+				fetch("https://3000-harlequin-quail-6c3y17o5.ws-us03.gitpod.io/favorites/", {
+					method: "DELETE",
+					body: JSON.stringify(body),
+					headers: {
+						"Content-Type": "application/json",
+						mode: "no-cors",
+						Accept: "*/*",
+						Authorization: "Bearer " + token
+					}
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+						getActions().getFavorites();
+						//setAuth(true);
+					})
+					.catch(err => console.log(err));
 			},
 			getSwapiRecords: async () => {
 				/**

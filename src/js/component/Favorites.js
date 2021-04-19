@@ -16,7 +16,7 @@ export const Favorites = props => {
 					{props.name}
 				</Link>
 			)}
-			<a onClick={() => actions.deleteFavorites(props.favoriteId, props.entityType)}>
+			<a onClick={() => actions.deleteFavorites(props.idToDelete)}>
 				<i className="fas fa-trash" />
 			</a>
 		</div>
@@ -26,5 +26,6 @@ export const Favorites = props => {
 Favorites.propTypes = {
 	name: PropTypes.string,
 	entityType: PropTypes.string,
-	favoriteId: PropTypes.string
+	favoriteId: PropTypes.string,
+	idToDelete: PropTypes.string
 };

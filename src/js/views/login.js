@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Login = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [auth, setAuth] = useState(false);
+	const { store, actions } = useContext(Context);
 	let myStorage = window.sessionStorage;
 
 	const handleSubmit = e => {
